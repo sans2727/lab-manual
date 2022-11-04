@@ -1,6 +1,6 @@
 /*Write a Java program to change priorityQueue to maximum priorityqueue.*/
 import java.util.*;
-  public class Example12 {
+  public class priorityqueue{
   public static void main(String[] args) {
   PriorityQueue<Integer> pq1 = new PriorityQueue<>(10, Collections.reverseOrder());
       
