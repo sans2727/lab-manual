@@ -1,3 +1,4 @@
+Date:9-11-22
 mysql> --MYSQL is a relational database management system on the Structured Query Language:
     -> --MYSQL creates database that allows you to build many tables to store and manipulate data and defining the relationship between each table.
     -> --datatypes:int,bigint,varchar(40),float(m,d):m=length,d=number of decimal,double(m,d),bool/boolean.
