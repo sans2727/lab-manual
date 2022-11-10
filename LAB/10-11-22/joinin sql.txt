@@ -1,0 +1,113 @@
+mysql> use employee;
+Database changed
+mysql> show tables;
++--------------------+
+| Tables_in_employee |
++--------------------+
+| officers           |
+| students           |
++--------------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from students;
++------+--------+--------+
+| s_id | s_name | c_name |
++------+--------+--------+
+|    1 | sans   | java   |
+|    2 | sidd   | STOA   |
+|    3 | neha   | python |
+|    4 | raj    | Dotnet |
+|    5 | pravin | SQL    |
+|    6 | drashu | PHP    |
++------+--------+--------+
+6 rows in set (0.00 sec)
+
+mysql> select * from officers;
++------+--------+----------+
+| o_id | o_name | location |
++------+--------+----------+
+|    1 | raj    | AUS      |
+|    2 | Prain  | ULS      |
+|    3 | Tanvu  | ULS      |
+|    4 | Diva   | AUS      |
+|    5 | Annu   | USA      |
++------+--------+----------+
+5 rows in set (0.00 sec)
+
+mysql> select officers.o_name,officers.location,students.s_name from officers
+    -> inner join students
+    -> on officers.o_name=students.s_name;
++--------+----------+--------+
+| o_name | location | s_name |
++--------+----------+--------+
+| raj    | AUS      | raj    |
+| Pravin | ULS      | Pravin |
++--------+----------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select officers.o_name,students.s_name from officers
+    -> left join students
+    -> on officers.o_id=students.s_id;
++--------+--------+
+| o_name | s_name |
++--------+--------+
+| raj    | sans   |
+| Pravin | sidd   |
+| Tanu   | neha   |
+| Diva   | raj    |
+| Annu   | Pravin |
++--------+--------+
+5 rows in set (0.00 sec)
+
+mysql> select officers.o_name,students.s_id,students.s_name from officers
+    -> right join students
+    -> on officers.o_id=students.s_id;
++--------+------+--------+
+| o_name | s_id | s_name |
++--------+------+--------+
+| raj    |    1 | sans   |
+| Pravin |    2 | sidd   |
+| Tanu   |    3 | neha   |
+| Diva   |    4 | raj    |
+| Annu   |    5 | Pravin |
+| NULL   |    6 | darshu |
++--------+------+--------+
+6 rows in set (0.00 sec)
+
+mysql> select * from officers CROSS JOIN students;
++------+--------+----------+------+--------+--------+
+| o_id | o_name | location | s_id | s_name | c_name |
++------+--------+----------+------+--------+--------+
+|    5 | Annu   | USA      |    1 | sans   | java   |
+|    4 | Diva   | USA      |    1 | sans   | java   |
+|    3 | Tanu   | ULS      |    1 | sans   | java   |
+|    2 | Pravin | ULS      |    1 | sans   | java   |
+|    1 | raj    | USA      |    1 | sans   | java   |
+|    5 | Annu   | AUS      |    2 | sidd   | STQA   |
+|    4 | Diva   | USA      |    2 | sidd   | STQA   |
+|    3 | Tanu   | ULS      |    2 | sidd   | STQA   |
+|    2 | Pravin | ULS      |    2 | sidd   | STQA   |
+|    1 | raj    | USA      |    2 | sidd   | STQA   |
+|    5 | Annu   | AUS      |    3 | neha   | python |
+|    4 | Diva   | AUS      |    3 | neha   | python |
+|    3 | Tanu   | ULS      |    3 | neha   | python |
+|    2 | Pravin | ULS      |    3 | neha   | python |
+|    1 | raj    | USA      |    3 | neha   | python |
+|    5 | Annu   | USA      |    4 | raj    | Dotnet |
+|    4 | Diva   | AUS      |    4 | raj    | Dotnet |
+|    3 | Tanu   | ULS      |    4 | raj    | Dotnet |
+|    2 | Pravin | ULS      |    4 | raj    | Dotnet |
+|    1 | raj    | USA      |    4 | raj    | Dotnet |
+|    5 | Annu   | AUS      |    5 | Pravin | SQL    |
+|    4 | Diva   | USA      |    5 | Pravin | SQL    |
+|    3 | Tanu   | ULS      |    5 | Pravin | SQL    |
+|    2 | Pravin | ULS      |    5 | Pravin | SQL    |
+|    1 | raj    | USA      |    5 | Pravin | SQL    |
+|    5 | Annu   | AUS      |    6 | drashu | PHP    |
+|    4 | Diva   | USA      |    6 | drashu | PHP    |
+|    3 | Tanu   | ULS      |    6 | drashu | PHP    |
+|    2 | Pravin | ULS      |    6 | drashu | PHP    |
+|    1 | raj    | USA      |    6 | drashu | PHP    |
++------+--------+----------+------+--------+--------+
+30 rows in set (0.00 sec)
+
